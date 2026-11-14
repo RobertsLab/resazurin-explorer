@@ -9,6 +9,8 @@ nav{display:flex;gap:4px;flex-wrap:wrap}
 nav button{border:0;background:none;padding:8px 12px;border-radius:6px;font:inherit;color:var(--ink2);cursor:pointer}
 nav button:hover{background:#f1f0ec}
 nav button[aria-selected=true]{background:#e8f0fb;color:var(--accent-ink);font-weight:600}
+.repo-link{margin-left:auto;display:flex;align-items:center;padding:6px;border-radius:6px;color:var(--ink2)}
+.repo-link:hover{background:#f1f0ec;color:var(--ink)}
 main{max-width:1400px;margin:0 auto;padding:20px}
 section[hidden]{display:none}
 h1{font-size:22px;margin:0 0 6px;letter-spacing:-.01em}h2{font-size:16px;margin:24px 0 8px}h3{font-size:14px;margin:16px 0 6px}
