@@ -1,0 +1,23 @@
+{
+  "id": "peerj21542-live-vs-shell",
+  "title": "Live oysters vs empty shells",
+  "species": "Crassostrea gigas",
+  "life_stage": "seed",
+  "size_class": "15-20 mm",
+  "container": "12-well plate",
+  "reader": "BioTek Synergy HTX",
+  "excitation_nm": 528,
+  "emission_nm": 590,
+  "temperature_profile": "35 C for 4 h",
+  "group_label": "Sample kind",
+  "description": "Live seed, empty shells and blank wells, to confirm the signal comes from the animal. Species is not recorded in the source repository; C. gigas is assumed.",
+  "source_url": "https://github.com/RobertsLab/resazurin-assay-development/tree/main/data/testing/optimization",
+  "date_start": "2025-01-01",
+  "doi": "10.7717/peerj.21542",
+  "citation": "Huffmyer AS et al. 2026. From blue to pink: resazurin as a high-throughput proxy for metabolic rate in oysters. PeerJ 14:e21542",
+  "contact": "Roberts Lab, University of Washington (SAFS)",
+  "license": "CC BY 4.0",
+  "resazurin_ug_ml": 111,
+  "salinity_psu": 25,
+  "date_note": "Exact run date not recorded in the source repository"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "peerj21542-medium-seed-thermal-curve",
+  "title": "Medium-seed thermal performance curve",
+  "species": "Crassostrea gigas",
+  "life_stage": "seed",
+  "size_class": "5-15 mm",
+  "container": "12-well plate, 300 uL subsampled to 96-well plate",
+  "volume_ml": 4,
+  "reader": "BioTek Synergy LX",
+  "excitation_nm": 528,
+  "emission_nm": 590,
+  "temperature_profile": "21, 26, 32, 37, 42 or 45 C for 5 h",
+  "description": "One temperature per day at the USDA Pacific Shellfish Research Unit. Source metadata records 26 C; the paper reports 27 C.",
+  "source_url": "https://github.com/RobertsLab/resazurin-assay-development/tree/main/data/thermal-curve",
+  "date_start": "2025-06-01",
+  "date_end": "2025-08-20",
+  "doi": "10.7717/peerj.21542",
+  "citation": "Huffmyer AS et al. 2026. From blue to pink: resazurin as a high-throughput proxy for metabolic rate in oysters. PeerJ 14:e21542",
+  "contact": "Roberts Lab, University of Washington (SAFS)",
+  "license": "CC BY 4.0",
+  "resazurin_ug_ml": 111,
+  "salinity_psu": 25
+}

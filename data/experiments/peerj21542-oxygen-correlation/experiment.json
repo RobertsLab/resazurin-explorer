@@ -1,0 +1,23 @@
+{
+  "id": "peerj21542-oxygen-correlation",
+  "title": "Oxygen-correlation assay",
+  "species": "Crassostrea gigas",
+  "life_stage": "seed",
+  "size_class": "4-7 mm",
+  "container": "48-well plate",
+  "volume_ml": 1.0,
+  "reader": "BioTek Synergy HTX",
+  "excitation_nm": 528,
+  "emission_nm": 590,
+  "temperature_profile": "27 C for 5 h",
+  "description": "Resazurin read hourly on the same 95 seed measured by microplate respirometry the previous day.",
+  "source_url": "https://github.com/RobertsLab/resazurin-assay-development/tree/main/data/oxygen-correlation",
+  "date_start": "2025-08-13",
+  "date_end": "2025-08-13",
+  "doi": "10.7717/peerj.21542",
+  "citation": "Huffmyer AS et al. 2026. From blue to pink: resazurin as a high-throughput proxy for metabolic rate in oysters. PeerJ 14:e21542",
+  "contact": "Roberts Lab, University of Washington (SAFS)",
+  "license": "CC BY 4.0",
+  "resazurin_ug_ml": 111,
+  "salinity_psu": 25
+}

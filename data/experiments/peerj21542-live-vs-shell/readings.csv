@@ -1,0 +1,181 @@
+sample_id,plate,type,hour,fluorescence,temperature_c,length_mm,group
+shell_1C3,trial2,blank,0,286,35,,
+shell_1C3,trial2,blank,1,270,35,,
+shell_1C3,trial2,blank,2,270,35,,
+shell_1C3,trial2,blank,3,269,35,,
+shell_1C3,trial2,blank,4,268,35,,
+shell_1C4,trial2,blank,0,315,35,,
+shell_1C4,trial2,blank,1,300,35,,
+shell_1C4,trial2,blank,2,297,35,,
+shell_1C4,trial2,blank,3,297,35,,
+shell_1C4,trial2,blank,4,295,35,,
+shell_2C3,trial2,blank,0,316,35,,
+shell_2C3,trial2,blank,1,297,35,,
+shell_2C3,trial2,blank,2,276,35,,
+shell_2C3,trial2,blank,3,276,35,,
+shell_2C3,trial2,blank,4,275,35,,
+shell_2C4,trial2,blank,0,320,35,,
+shell_2C4,trial2,blank,1,298,35,,
+shell_2C4,trial2,blank,2,289,35,,
+shell_2C4,trial2,blank,3,288,35,,
+shell_2C4,trial2,blank,4,288,35,,
+shell_3C3,trial2,blank,0,311,35,,
+shell_3C3,trial2,blank,1,300,35,,
+shell_3C3,trial2,blank,2,293,35,,
+shell_3C3,trial2,blank,3,291,35,,
+shell_3C3,trial2,blank,4,289,35,,
+shell_3C4,trial2,blank,0,280,35,,
+shell_3C4,trial2,blank,1,264,35,,
+shell_3C4,trial2,blank,2,262,35,,
+shell_3C4,trial2,blank,3,261,35,,
+shell_3C4,trial2,blank,4,258,35,,
+shell_1A1,trial2,sample,0,338,35,18.27,empty shell
+shell_1A1,trial2,sample,1,342,35,18.27,empty shell
+shell_1A1,trial2,sample,2,349,35,18.27,empty shell
+shell_1A1,trial2,sample,3,349,35,18.27,empty shell
+shell_1A1,trial2,sample,4,354,35,18.27,empty shell
+shell_1A2,trial2,sample,0,304,35,12.51,empty shell
+shell_1A2,trial2,sample,1,297,35,12.51,empty shell
+shell_1A2,trial2,sample,2,298,35,12.51,empty shell
+shell_1A2,trial2,sample,3,298,35,12.51,empty shell
+shell_1A2,trial2,sample,4,296,35,12.51,empty shell
+shell_1A3,trial2,sample,0,320,35,15.65,empty shell
+shell_1A3,trial2,sample,1,324,35,15.65,empty shell
+shell_1A3,trial2,sample,2,349,35,15.65,empty shell
+shell_1A3,trial2,sample,3,351,35,15.65,empty shell
+shell_1A3,trial2,sample,4,358,35,15.65,empty shell
+shell_1A4,trial2,sample,0,285,35,17.16,empty shell
+shell_1A4,trial2,sample,1,287,35,17.16,empty shell
+shell_1A4,trial2,sample,2,296,35,17.16,empty shell
+shell_1A4,trial2,sample,3,302,35,17.16,empty shell
+shell_1A4,trial2,sample,4,308,35,17.16,empty shell
+shell_1B1,trial2,sample,0,304,35,15.83,empty shell
+shell_1B1,trial2,sample,1,318,35,15.83,empty shell
+shell_1B1,trial2,sample,2,338,35,15.83,empty shell
+shell_1B1,trial2,sample,3,346,35,15.83,empty shell
+shell_1B1,trial2,sample,4,356,35,15.83,empty shell
+shell_1B2,trial2,sample,0,394,35,17.27,live oyster
+shell_1B2,trial2,sample,1,497,35,17.27,live oyster
+shell_1B2,trial2,sample,2,680,35,17.27,live oyster
+shell_1B2,trial2,sample,3,781,35,17.27,live oyster
+shell_1B2,trial2,sample,4,942,35,17.27,live oyster
+shell_1B3,trial2,sample,0,362,35,15.88,live oyster
+shell_1B3,trial2,sample,1,491,35,15.88,live oyster
+shell_1B3,trial2,sample,2,606,35,15.88,live oyster
+shell_1B3,trial2,sample,3,720,35,15.88,live oyster
+shell_1B3,trial2,sample,4,816,35,15.88,live oyster
+shell_1B4,trial2,sample,0,337,35,16.83,live oyster
+shell_1B4,trial2,sample,1,468,35,16.83,live oyster
+shell_1B4,trial2,sample,2,594,35,16.83,live oyster
+shell_1B4,trial2,sample,3,685,35,16.83,live oyster
+shell_1B4,trial2,sample,4,822,35,16.83,live oyster
+shell_1C1,trial2,sample,0,369,35,21.91,live oyster
+shell_1C1,trial2,sample,1,524,35,21.91,live oyster
+shell_1C1,trial2,sample,2,666,35,21.91,live oyster
+shell_1C1,trial2,sample,3,738,35,21.91,live oyster
+shell_1C1,trial2,sample,4,834,35,21.91,live oyster
+shell_1C2,trial2,sample,0,352,35,19.25,live oyster
+shell_1C2,trial2,sample,1,560,35,19.25,live oyster
+shell_1C2,trial2,sample,2,759,35,19.25,live oyster
+shell_1C2,trial2,sample,3,875,35,19.25,live oyster
+shell_1C2,trial2,sample,4,1017,35,19.25,live oyster
+shell_2A1,trial2,sample,0,334,35,14.67,empty shell
+shell_2A1,trial2,sample,1,358,35,14.67,empty shell
+shell_2A1,trial2,sample,2,366,35,14.67,empty shell
+shell_2A1,trial2,sample,3,375,35,14.67,empty shell
+shell_2A1,trial2,sample,4,388,35,14.67,empty shell
+shell_2A2,trial2,sample,0,320,35,14.49,empty shell
+shell_2A2,trial2,sample,1,323,35,14.49,empty shell
+shell_2A2,trial2,sample,2,327,35,14.49,empty shell
+shell_2A2,trial2,sample,3,331,35,14.49,empty shell
+shell_2A2,trial2,sample,4,334,35,14.49,empty shell
+shell_2A3,trial2,sample,0,308,35,16.65,empty shell
+shell_2A3,trial2,sample,1,318,35,16.65,empty shell
+shell_2A3,trial2,sample,2,330,35,16.65,empty shell
+shell_2A3,trial2,sample,3,335,35,16.65,empty shell
+shell_2A3,trial2,sample,4,347,35,16.65,empty shell
+shell_2A4,trial2,sample,0,341,35,19.28,empty shell
+shell_2A4,trial2,sample,1,343,35,19.28,empty shell
+shell_2A4,trial2,sample,2,345,35,19.28,empty shell
+shell_2A4,trial2,sample,3,347,35,19.28,empty shell
+shell_2A4,trial2,sample,4,348,35,19.28,empty shell
+shell_2B1,trial2,sample,0,356,35,15.47,empty shell
+shell_2B1,trial2,sample,1,370,35,15.47,empty shell
+shell_2B1,trial2,sample,2,387,35,15.47,empty shell
+shell_2B1,trial2,sample,3,396,35,15.47,empty shell
+shell_2B1,trial2,sample,4,411,35,15.47,empty shell
+shell_2B2,trial2,sample,0,415,35,13.36,live oyster
+shell_2B2,trial2,sample,1,572,35,13.36,live oyster
+shell_2B2,trial2,sample,2,772,35,13.36,live oyster
+shell_2B2,trial2,sample,3,890,35,13.36,live oyster
+shell_2B2,trial2,sample,4,1029,35,13.36,live oyster
+shell_2B3,trial2,sample,0,356,35,15.05,live oyster
+shell_2B3,trial2,sample,1,453,35,15.05,live oyster
+shell_2B3,trial2,sample,2,553,35,15.05,live oyster
+shell_2B3,trial2,sample,3,631,35,15.05,live oyster
+shell_2B3,trial2,sample,4,724,35,15.05,live oyster
+shell_2B4,trial2,sample,0,335,35,16.49,live oyster
+shell_2B4,trial2,sample,1,431,35,16.49,live oyster
+shell_2B4,trial2,sample,2,534,35,16.49,live oyster
+shell_2B4,trial2,sample,3,591,35,16.49,live oyster
+shell_2B4,trial2,sample,4,661,35,16.49,live oyster
+shell_2C1,trial2,sample,0,402,35,22.27,live oyster
+shell_2C1,trial2,sample,1,511,35,22.27,live oyster
+shell_2C1,trial2,sample,2,679,35,22.27,live oyster
+shell_2C1,trial2,sample,3,816,35,22.27,live oyster
+shell_2C1,trial2,sample,4,1000,35,22.27,live oyster
+shell_2C2,trial2,sample,0,438,35,19.31,live oyster
+shell_2C2,trial2,sample,1,621,35,19.31,live oyster
+shell_2C2,trial2,sample,2,832,35,19.31,live oyster
+shell_2C2,trial2,sample,3,962,35,19.31,live oyster
+shell_2C2,trial2,sample,4,1144,35,19.31,live oyster
+shell_3A1,trial2,sample,0,309,35,21.91,empty shell
+shell_3A1,trial2,sample,1,362,35,21.91,empty shell
+shell_3A1,trial2,sample,2,411,35,21.91,empty shell
+shell_3A1,trial2,sample,3,450,35,21.91,empty shell
+shell_3A1,trial2,sample,4,485,35,21.91,empty shell
+shell_3A2,trial2,sample,0,310,35,14.71,empty shell
+shell_3A2,trial2,sample,1,313,35,14.71,empty shell
+shell_3A2,trial2,sample,2,312,35,14.71,empty shell
+shell_3A2,trial2,sample,3,311,35,14.71,empty shell
+shell_3A2,trial2,sample,4,312,35,14.71,empty shell
+shell_3A3,trial2,sample,0,338,35,13.2,empty shell
+shell_3A3,trial2,sample,1,345,35,13.2,empty shell
+shell_3A3,trial2,sample,2,360,35,13.2,empty shell
+shell_3A3,trial2,sample,3,365,35,13.2,empty shell
+shell_3A3,trial2,sample,4,370,35,13.2,empty shell
+shell_3A4,trial2,sample,0,334,35,15.69,empty shell
+shell_3A4,trial2,sample,1,352,35,15.69,empty shell
+shell_3A4,trial2,sample,2,373,35,15.69,empty shell
+shell_3A4,trial2,sample,3,380,35,15.69,empty shell
+shell_3A4,trial2,sample,4,395,35,15.69,empty shell
+shell_3B1,trial2,sample,0,322,35,12.04,empty shell
+shell_3B1,trial2,sample,1,341,35,12.04,empty shell
+shell_3B1,trial2,sample,2,350,35,12.04,empty shell
+shell_3B1,trial2,sample,3,355,35,12.04,empty shell
+shell_3B1,trial2,sample,4,362,35,12.04,empty shell
+shell_3B2,trial2,sample,0,365,35,15.72,live oyster
+shell_3B2,trial2,sample,1,448,35,15.72,live oyster
+shell_3B2,trial2,sample,2,557,35,15.72,live oyster
+shell_3B2,trial2,sample,3,625,35,15.72,live oyster
+shell_3B2,trial2,sample,4,702,35,15.72,live oyster
+shell_3B3,trial2,sample,0,327,35,18.62,live oyster
+shell_3B3,trial2,sample,1,422,35,18.62,live oyster
+shell_3B3,trial2,sample,2,529,35,18.62,live oyster
+shell_3B3,trial2,sample,3,594,35,18.62,live oyster
+shell_3B3,trial2,sample,4,692,35,18.62,live oyster
+shell_3B4,trial2,sample,0,390,35,16.85,live oyster
+shell_3B4,trial2,sample,1,591,35,16.85,live oyster
+shell_3B4,trial2,sample,2,768,35,16.85,live oyster
+shell_3B4,trial2,sample,3,848,35,16.85,live oyster
+shell_3B4,trial2,sample,4,1009,35,16.85,live oyster
+shell_3C1,trial2,sample,0,358,35,15.32,live oyster
+shell_3C1,trial2,sample,1,478,35,15.32,live oyster
+shell_3C1,trial2,sample,2,594,35,15.32,live oyster
+shell_3C1,trial2,sample,3,645,35,15.32,live oyster
+shell_3C1,trial2,sample,4,731,35,15.32,live oyster
+shell_3C2,trial2,sample,0,357,35,14.38,live oyster
+shell_3C2,trial2,sample,1,501,35,14.38,live oyster
+shell_3C2,trial2,sample,2,645,35,14.38,live oyster
+shell_3C2,trial2,sample,3,735,35,14.38,live oyster
+shell_3C2,trial2,sample,4,853,35,14.38,live oyster

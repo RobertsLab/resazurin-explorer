@@ -1,0 +1,20 @@
+{
+  "id": "example-ploidy-heat-trial",
+  "title": "Example: ploidy heat trial",
+  "species": "Crassostrea gigas",
+  "contact": "Your name, your lab, you@example.edu",
+  "date_start": "2026-03-10",
+  "container": "96-well plate",
+  "life_stage": "seed",
+  "size_class": "5-10 mm",
+  "volume_ml": 0.28,
+  "reader": "BioTek Synergy HTX",
+  "excitation_nm": 530,
+  "emission_nm": 590,
+  "resazurin_ug_ml": 111,
+  "salinity_psu": 25,
+  "temperature_profile": "18 or 38 C for 4 h",
+  "group_label": "Ploidy",
+  "description": "Made-up numbers that show the file layout. Replace with your own.",
+  "license": "CC BY 4.0"
+}

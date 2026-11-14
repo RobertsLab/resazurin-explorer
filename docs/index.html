@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resazurin Explorer</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <div class="bar">
+    <div class="brand">Resazurin Explorer<small>Whole-animal metabolic assays in shellfish</small></div>
+    <nav role="tablist">
+      <button role="tab" data-tab="overview" aria-selected="true">Overview</button>
+      <button role="tab" data-tab="explore">Explore</button>
+      <button role="tab" data-tab="upload">Add your data</button>
+      <button role="tab" data-tab="format">Data format</button>
+      <button role="tab" data-tab="about">About</button>
+    </nav>
+  </div>
+</header>
+<main>
+
+<section id="tab-overview">
+  <h1>Resazurin fluorescence time series, in one place</h1>
+  <p class="lede">Every well from the resazurin assays in Huffmyer et al. 2026 (PeerJ 14:e21542), in one standard format. Search and plot them, then add your own experiment to see how it sits against the published studies.</p>
+  <div class="stats" id="stats"></div>
+  <div class="row" style="margin-bottom:8px"><h2 style="margin:0">Experiments</h2><input type="search" id="exp-search" placeholder="Search experiments: species, temperature, reader, size…" style="max-width:380px;margin-left:auto"></div>
+  <div class="cards" id="exp-cards"></div>
+</section>
+
+<section id="tab-explore" hidden>
+  <div class="layout">
+    <aside class="card filters" id="filters">
+      <h3>Search</h3>
+      <input type="search" id="f-q" placeholder="sample, family, group, plate…">
+      <h3>Experiment</h3><div id="f-exp"></div>
+      <h3>Species</h3><div id="f-species"></div>
+      <h3>Temperature (°C)</h3><div class="range"><input type="number" id="f-tmin" placeholder="min"><span>to</span><input type="number" id="f-tmax" placeholder="max"></div>
+      <h3>Shell length (mm)</h3><div class="range"><input type="number" id="f-lmin" placeholder="min"><span>to</span><input type="number" id="f-lmax" placeholder="max"></div>
+      <h3>Survival</h3>
+      <select id="f-mort"><option value="">any</option><option value="alive">alive</option><option value="dead">dead</option><option value="unknown">not recorded</option></select>
+      <h3>Quality</h3>
+      <label><input type="checkbox" id="f-excl"> include wells excluded by the authors</label>
+      <p style="margin-top:14px"><button class="btn" id="f-reset">Reset filters</button></p>
+    </aside>
+    <div>
+      <div class="controls">
+        <div><label for="c-metric">Y-axis</label><select id="c-metric">
+          <option value="fold">Fold change (F / F at hour 0)</option>
+          <option value="fc">Blank-corrected fold change</option>
+          <option value="fmm">Blank-corrected fold change per mm</option>
+          <option value="f">Raw fluorescence (RFU)</option></select></div>
+        <div><label for="c-color">Color by</label><select id="c-color">
+          <option value="experiment">Experiment</option><option value="species">Species</option>
+          <option value="temperature">Temperature</option><option value="size">Shell length</option>
+          <option value="mortality">Survival</option><option value="group">Group / treatment</option>
+          <option value="source">Your data vs published</option></select></div>
+        <div><label for="c-facet">Panels</label><select id="c-facet">
+          <option value="experiment">One per experiment</option><option value="none">Single panel</option>
+          <option value="species">One per species</option><option value="temperature">One per temperature</option></select></div>
+        <div><label for="c-scale">Scale</label><select id="c-scale"><option value="log">Log</option><option value="linear">Linear</option></select></div>
+        <label class="chk"><input type="checkbox" id="c-ind" checked> individual wells</label>
+        <label class="chk"><input type="checkbox" id="c-sharey" checked> shared y-axis</label>
+      </div>
+      <div class="note" id="explore-count"></div>
+      <div class="legend" id="legend"></div>
+      <div class="panels" id="panels"></div>
+      <div class="row" style="margin:18px 0 8px"><h2 style="margin:0">Matching wells</h2>
+        <span class="note" id="table-count"></span>
+        <button class="btn" id="dl-filtered" style="margin-left:auto">Download these readings (CSV)</button></div>
+      <div class="tablewrap"><table id="table"></table></div>
+      <p class="note" style="margin-top:6px">Rate is blank-corrected fold change per hour at the last reading. Click a column header to sort. The table shows the first 200 rows; the download has all of them.</p>
+    </div>
+  </div>
+</section>
+
+<section id="tab-upload" hidden>
+  <h1>Add your experiment</h1>
+  <p class="lede">Your files are read in this browser tab only. Nothing is sent to a server. To make an experiment a permanent part of the database, download the package in step 4 and open a pull request.</p>
+  <div class="steps">
+    <div class="card step">
+      <h2>Describe the experiment</h2>
+      <div class="row" style="margin-bottom:10px"><span class="note">Fill in the form, or load an <code>experiment.json</code>:</span><input type="file" id="u-meta-file" accept=".json,application/json" style="width:auto"></div>
+      <div class="form" id="u-form"></div>
+    </div>
+    <div class="card step">
+      <h2>Load the readings</h2>
+      <div class="drop" id="u-drop">Drop a readings file here (.csv or .tsv), or <button class="link" id="u-pick">choose a file</button>
+        <input type="file" id="u-file" accept=".csv,.tsv,.txt,text/csv" hidden>
+        <div style="margin-top:8px" class="note">Required columns: <code>sample_id</code>, <code>plate</code>, <code>type</code>, <code>hour</code>, <code>fluorescence</code>, and <code>temperature_c</code> for samples. See <button class="link" data-goto="format">Data format</button>.</div>
+        <div style="margin-top:8px"><button class="btn" id="u-example">Try it with an example experiment</button></div>
+      </div>
+      <div id="u-report"></div>
+    </div>
+    <div class="card step">
+      <h2>See it in context</h2>
+      <div id="u-context-empty" class="note">Load a valid readings file to compare it with the published studies.</div>
+      <div id="u-context" hidden>
+        <div class="controls">
+          <div><label for="u-compare">Compare with</label><select id="u-compare"><option value="all">All published experiments</option><option value="species">Same species only</option></select></div>
+          <div><label for="u-metric">Curve metric</label><select id="u-metric"><option value="fold">Fold change</option><option value="fc">Blank-corrected fold change</option><option value="fmm">Blank-corrected fold change per mm</option></select></div>
+        </div>
+        <div class="legend" id="u-legend"></div>
+        <div class="grid2">
+          <div class="card"><div id="u-c1"></div></div>
+          <div class="card"><div id="u-c2"></div></div>
+          <div class="card"><div id="u-c3"></div></div>
+        </div>
+        <p class="note" id="u-summary" style="margin-top:10px"></p>
+      </div>
+    </div>
+    <div class="card step">
+      <h2>Keep it</h2>
+      <div class="row">
+        <button class="btn primary" id="u-add" disabled>Add to the Explorer in this browser</button>
+        <button class="btn" id="u-download" disabled>Download submission package</button>
+      </div>
+      <p class="note" style="margin-top:10px">"Add to the Explorer" keeps the experiment in this browser so it shows up in Overview and Explore next time you visit. "Download submission package" saves <code>experiment.json</code> and <code>readings.csv</code> in the repository's standard layout. Put both in <code>data/experiments/&lt;id&gt;/</code> and open a pull request; an automated check validates them and rebuilds the site.</p>
+      <div id="u-mine"></div>
+    </div>
+  </div>
+</section>
+
+<section id="tab-format" hidden>
+  <h1>Data format</h1>
+  <p class="lede">An experiment is two files: a small description (<code>experiment.json</code>) and a table of plate-reader values (<code>readings.csv</code>). The published experiments in this site are stored in exactly this format.</p>
+  <div class="row"><button class="btn" data-tpl="long">Download readings template (long)</button><button class="btn" data-tpl="wide">Download readings template (wide)</button><button class="btn" data-tpl="meta">Download experiment.json template</button></div>
+
+  <h2>Minimum required information</h2>
+  <div class="card"><ul style="margin:0;padding-left:18px">
+    <li><b>About the experiment:</b> a short id, a title, the species, a contact, the start date, and the container the animals were incubated in.</li>
+    <li><b>For every well or cup:</b> a unique <code>sample_id</code>, the <code>plate</code> (or run) it belongs to, and whether it is a <code>sample</code> or a <code>blank</code>.</li>
+    <li><b>For every reading:</b> the <code>hour</code> since resazurin was added and the raw <code>fluorescence</code>.</li>
+    <li><b>For every sample:</b> the incubation temperature in °C.</li>
+    <li><b>A reading at hour 0 for every well</b>, and at least one later reading. Hour 0 is the baseline for fold change.</li>
+  </ul></div>
+  <p class="note" style="margin-top:8px">Strongly recommended: at least one blank well (resazurin solution, no animal) per plate, and shell length in mm. Without blanks the site cannot blank-correct; without lengths it cannot size-normalize.</p>
+
+  <h2>readings.csv</h2>
+  <p>One row per well per time point (long format). Comma- or tab-separated, with a header row. Column order does not matter.</p>
+  <div class="tablewrap" style="max-height:none"><table class="spec" id="spec-readings"></table></div>
+  <h3>Example (long format)</h3><pre id="ex-long"></pre>
+  <h3>Wide format is also accepted by the uploader</h3>
+  <p>One row per well, with one column per time point named by the hour (<code>0</code>, <code>1</code>, <code>2</code> or <code>T0</code>, <code>T1</code> or <code>h0</code>, <code>h1</code>). The uploader converts it to long format; the submission package is always long.</p>
+  <pre id="ex-wide"></pre>
+
+  <h2>experiment.json</h2>
+  <div class="tablewrap" style="max-height:none"><table class="spec" id="spec-meta"></table></div>
+  <h3>Example</h3><pre id="ex-meta"></pre>
+
+  <h2>What the site calculates</h2>
+  <div class="card"><table class="spec">
+    <tr><th>Value</th><th>Definition</th></tr>
+    <tr><td>Fold change</td><td>fluorescence at hour <i>t</i> ÷ fluorescence of the same well at hour 0</td></tr>
+    <tr><td>Blank-corrected fold change</td><td>fold change − mean fold change of the blank wells on the same <code>plate</code> at the same hour</td></tr>
+    <tr><td>Per mm</td><td>blank-corrected fold change ÷ shell length in mm (the paper's "metabolism")</td></tr>
+    <tr><td>Rate</td><td>blank-corrected fold change at the last reading ÷ hours elapsed</td></tr>
+  </table></div>
+
+  <h2>Rules the validator enforces</h2>
+  <div class="card"><ul style="margin:0;padding-left:18px">
+    <li><code>sample_id</code> is unique within the experiment, and each well has one reading per hour.</li>
+    <li><code>type</code> is <code>sample</code> or <code>blank</code>. Empty shells and other controls are samples with a <code>group</code> label.</li>
+    <li><code>plate</code> names the set of wells that share blanks. If blanks were run per temperature or per day, give each set its own plate name.</li>
+    <li>Every well has a positive reading at hour 0 and at least two readings. Empty fluorescence cells are skipped.</li>
+    <li><code>temperature_c</code> is present for every sample. For two-phase designs, record the stress temperature and describe the schedule in <code>temperature_profile</code>.</li>
+    <li>Wells you want kept but hidden by default (spilled, saturated, empty shell) get a reason in <code>excluded</code>.</li>
+  </ul></div>
+</section>
+
+<section id="tab-about" hidden>
+  <h1>About</h1>
+  <p>This site is a static page served from the <code>docs/</code> folder of its GitHub repository. It has no server and no database: the published data are bundled as one file, and everything else happens in your browser.</p>
+  <h2>Source of the published data</h2>
+  <p>Huffmyer AS, Ozguner N, Baird M, Elvrum C, Kounellas C, Dicksion D, White SJ, Plough L, Gavery MR, Krebs N, Walton W, Small J, Pitsenbarger M, Ealy-Whitfield H, Roberts S. 2026. From blue to pink: resazurin as a high-throughput proxy for metabolic rate in oysters. PeerJ 14:e21542. <a href="https://doi.org/10.7717/peerj.21542">doi.org/10.7717/peerj.21542</a></p>
+  <p>Raw plate files came from <a href="https://github.com/RobertsLab/resazurin-assay-development">RobertsLab/resazurin-assay-development</a> and <a href="https://github.com/RobertsLab/vims-resazurin">RobertsLab/vims-resazurin</a>. The conversion scripts are in <code>scripts/import_peerj21542/</code>.</p>
+  <h2>Adding an experiment permanently</h2>
+  <ol>
+    <li>Use <button class="link" data-goto="upload">Add your data</button> to check the files and download the submission package.</li>
+    <li>Fork the repository and put the two files in <code>data/experiments/&lt;id&gt;/</code>.</li>
+    <li>Open a pull request. A GitHub Action runs <code>scripts/validate.py</code>; after merge it rebuilds <code>docs/data/db.js</code> and the site updates.</li>
+  </ol>
+  <h2>Caveats</h2>
+  <p>Fold change depends on plate reader gain, resazurin volume per animal, and the temperature of the solution at the hour-0 read, so absolute values differ between studies for reasons other than biology. Compare shapes and within-study contrasts first, and treat cross-study differences in level with care.</p>
+</section>
+
+</main>
+<footer>Resazurin Explorer. Code MIT; published data CC BY 4.0 (Huffmyer et al. 2026).</footer>
+<script src="data/db.js"></script>
+<script src="js/core.js"></script>
+<script src="js/chart.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
