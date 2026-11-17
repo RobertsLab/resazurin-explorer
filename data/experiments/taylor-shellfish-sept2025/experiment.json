@@ -1,0 +1,18 @@
+{
+  "id": "taylor-shellfish-sept2025",
+  "title": "Taylor Shellfish family screening (Sept 2025)",
+  "species": "Crassostrea gigas",
+  "life_stage": "seed",
+  "size_class": "1-7 mm",
+  "container": "96-well plate",
+  "reader": "BioTek Synergy HTX",
+  "excitation_nm": 528,
+  "emission_nm": 590,
+  "temperature_profile": "Warmed from 22 to 35 C over 2.5 h (measured on day 1); temperature_c records the 35 C plateau",
+  "group_label": "Trial day",
+  "description": "38 Taylor Shellfish hatchery families screened on 2025-09-03 (38 plates); plates 1-19 were re-run with the same oysters on 2025-09-04 as a repeat stressor. Reads at 0.5, 1.5 and 2.5 h; there was no hour-0 read, so hour 0 is each plate's mean blank fluorescence, as in the source analysis. Wells the source analysis drops (not exactly one oyster, saturated, inactive) are flagged as excluded.",
+  "source_url": "https://github.com/RobertsLab/resazurin-family-screenings/tree/main/taylor-shellfish-sept2025",
+  "date_start": "2025-09-03",
+  "date_end": "2025-09-04",
+  "contact": "Roberts Lab, University of Washington (SAFS)"
+}
