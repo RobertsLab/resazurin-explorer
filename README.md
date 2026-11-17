@@ -2,7 +2,7 @@
 
 A self-contained repository and static website for whole-animal resazurin metabolic assays in shellfish.
 
-- **Search and explore** every well from the seven resazurin assays in Huffmyer et al. 2026 (PeerJ 14:e21542): 2,971 animals, two species, 4 to 45 °C.
+- **Search and explore** every well from the seven resazurin assays in Huffmyer et al. 2026 (PeerJ 14:e21542), plus the Taylor Shellfish family screening (Sept 2025, 38 families, 4,788 wells).
 - **Add a new experiment** in the browser, validate it, and see it plotted against the published studies.
 - **Contribute it permanently** with a pull request. One folder, two files, checked automatically.
 
@@ -58,6 +58,7 @@ docs/templates/                         template files for new experiments
 scripts/validate.py                     validates data/experiments
 scripts/build_site.py                   regenerates docs/data/db.js
 scripts/import_peerj21542/              how the published data were converted from the source repositories
+scripts/import_taylor_sept2025/         how the Taylor Shellfish Sept 2025 screening was converted
 .github/workflows/                      validation on pull requests, site rebuild on merge
 ```
 

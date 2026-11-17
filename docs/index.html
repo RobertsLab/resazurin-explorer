@@ -26,7 +26,7 @@
 
 <section id="tab-overview">
   <h1>Resazurin fluorescence time series, in one place</h1>
-  <p class="lede">Every well from the resazurin assays in Huffmyer et al. 2026 (PeerJ 14:e21542), in one standard format. Search and plot them, then add your own experiment to see how it sits against the published studies.</p>
+  <p class="lede">Every well from the resazurin assays in Huffmyer et al. 2026 (PeerJ 14:e21542) and the Taylor Shellfish family screening (Sept 2025), in one standard format. Search and plot them, then add your own experiment to see how it sits against the published studies.</p>
   <div class="stats" id="stats"></div>
   <div class="row" style="margin-bottom:8px"><h2 style="margin:0">Experiments</h2><input type="search" id="exp-search" placeholder="Search experiments: species, temperature, reader, size…" style="max-width:380px;margin-left:auto"></div>
   <div class="cards" id="exp-cards"></div>
@@ -57,11 +57,11 @@
         <div><label for="c-color">Color by</label><select id="c-color">
           <option value="experiment">Experiment</option><option value="species">Species</option>
           <option value="temperature">Temperature</option><option value="size">Shell length</option>
-          <option value="mortality">Survival</option><option value="group">Group / treatment</option>
+          <option value="mortality">Survival</option><option value="group">Group / treatment</option><option value="family">Family</option>
           <option value="source">Your data vs published</option></select></div>
         <div><label for="c-facet">Panels</label><select id="c-facet">
           <option value="experiment">One per experiment</option><option value="none">Single panel</option>
-          <option value="species">One per species</option><option value="temperature">One per temperature</option></select></div>
+          <option value="species">One per species</option><option value="temperature">One per temperature</option><option value="family">One per family</option></select></div>
         <div><label for="c-scale">Scale</label><select id="c-scale"><option value="log">Log</option><option value="linear">Linear</option></select></div>
         <label class="chk"><input type="checkbox" id="c-ind" checked> individual wells</label>
         <label class="chk"><input type="checkbox" id="c-sharey" checked> shared y-axis</label>
@@ -178,6 +178,7 @@
   <h2>Source of the published data</h2>
   <p>Huffmyer AS, Ozguner N, Baird M, Elvrum C, Kounellas C, Dicksion D, White SJ, Plough L, Gavery MR, Krebs N, Walton W, Small J, Pitsenbarger M, Ealy-Whitfield H, Roberts S. 2026. From blue to pink: resazurin as a high-throughput proxy for metabolic rate in oysters. PeerJ 14:e21542. <a href="https://doi.org/10.7717/peerj.21542">doi.org/10.7717/peerj.21542</a></p>
   <p>Raw plate files came from <a href="https://github.com/RobertsLab/resazurin-assay-development">RobertsLab/resazurin-assay-development</a> and <a href="https://github.com/RobertsLab/vims-resazurin">RobertsLab/vims-resazurin</a>. The conversion scripts are in <code>scripts/import_peerj21542/</code>.</p>
+  <p>The Taylor Shellfish family screening (September 2025) came from <a href="https://github.com/RobertsLab/resazurin-family-screenings/tree/main/taylor-shellfish-sept2025">RobertsLab/resazurin-family-screenings</a> and was converted with <code>scripts/import_taylor_sept2025/</code>.</p>
   <h2>Adding an experiment permanently</h2>
   <ol>
     <li>Use <button class="link" data-goto="upload">Add your data</button> to check the files and download the submission package.</li>

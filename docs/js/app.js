@@ -119,6 +119,19 @@
   const blues = t => mix([185, 214, 239], [11, 60, 122], t);
   const SIZE_BINS = [[0, 5, "under 5 mm"], [5, 10, "5 to 10 mm"], [10, 15, "10 to 15 mm"], [15, 20, "15 to 20 mm"], [20, 25, "20 to 25 mm"], [25, 1e9, "25 mm and over"]];
 
+  /* Family IDs are only unique within an experiment, so family keys carry the experiment id. */
+  const famKey = s => s.fam ? s.e + "|" + s.fam : "none";
+  const famSplit = k => { const i = k.indexOf("|"); return [k.slice(0, i), k.slice(i + 1)]; };
+  const famCmp = (a, b) => {
+    if (a === b) return 0; if (a === "none") return 1; if (b === "none") return -1;
+    const [ea, fa] = famSplit(a), [eb, fb] = famSplit(b), d = EXPS.findIndex(e => e.id === ea) - EXPS.findIndex(e => e.id === eb);
+    return d || fa.localeCompare(fb, undefined, { numeric: true });
+  };
+  function famLabeler(ss) {   // name the experiment only when families from several experiments are on screen
+    const multi = new Set(ss.filter(s => s.fam).map(s => s.e)).size > 1;
+    return k => { if (k === "none") return "family not recorded"; const [e, f] = famSplit(k); return "Family " + f + (multi ? " (" + EXP[e].title + ")" : ""); };
+  }
+
   /* returns key -> {label, color, order} for the chosen color mode, over the given samples */
   function colorizer(mode, ss) {
     const map = new Map(); let keyOf;
@@ -137,6 +150,11 @@
       const top = [...cnt.entries()].filter(([k]) => k !== "none").sort((a, b) => b[1] - a[1]).slice(0, 7).map(([k]) => k);
       keyOf = s => (s.g && top.includes(s.g)) ? s.g : (s.g ? "other" : "none");
       top.forEach((k, i) => map.set(k, { label: k, color: CAT[i], order: i })); map.set("other", { label: "other groups", color: MUTED, order: 8 }); map.set("none", { label: "no group", color: OTHER, order: 9 });
+    } else if (mode === "family") {
+      keyOf = famKey; const lab = famLabeler(ss), ks = [...new Set(ss.map(famKey))].filter(k => k !== "none").sort(famCmp);
+      ks.forEach((k, i) => map.set(k, { label: lab(k), order: i,
+        color: ks.length <= CAT.length ? CAT[i] : `hsl(${Math.round(i * 137.508) % 360},62%,${i % 2 ? 38 : 52}%)` }));
+      map.set("none", { label: "family not recorded", color: OTHER, order: 1e6 });
     } else {   // your data vs published: one gray median per published experiment, so studies of different length are not pooled
       keyOf = s => EXP[s.e].user ? "u:" + s.e : s.e;
       EXPS.forEach((e, i) => map.set(e.user ? "u:" + e.id : e.id, e.user ? { label: e.title + " (yours)", color: ORANGE, order: 100 + i, legend: "your data" }
@@ -173,19 +191,20 @@
     const canLog = metric === "fold" || metric === "f"; $("#c-scale").disabled = !canLog;
     const log = canLog && $("#c-scale").value === "log", ind = $("#c-ind").checked, share = $("#c-sharey").checked;
     const cz = colorizer(mode, ss);
-    const fk = facet === "experiment" ? (s => s.e) : facet === "species" ? (s => s.sp) : facet === "temperature" ? (s => s.t) : (() => "all");
+    const fk = facet === "experiment" ? (s => s.e) : facet === "species" ? (s => s.sp) : facet === "temperature" ? (s => s.t) : facet === "family" ? famKey : (() => "all");
     const panels = new Map(); ss.forEach(s => { const k = fk(s); (panels.get(k) || panels.set(k, []).get(k)).push(s); });
     let pk = [...panels.keys()];
-    if (facet === "experiment") pk.sort((a, b) => EXPS.findIndex(e => e.id === a) - EXPS.findIndex(e => e.id === b)); else pk.sort((a, b) => a > b ? 1 : -1);
+    if (facet === "experiment") pk.sort((a, b) => EXPS.findIndex(e => e.id === a) - EXPS.findIndex(e => e.id === b)); else if (facet === "family") pk.sort(famCmp); else pk.sort((a, b) => a > b ? 1 : -1);
     const wrap = $("#panels"); wrap.innerHTML = ""; wrap.className = "panels" + (pk.length > 1 ? " multi" : "");
     $("#explore-count").textContent = `${ss.length.toLocaleString()} of ${ALL.length.toLocaleString()} wells match` + (ss.length ? "" : ". Loosen the filters to see data.");
     const used = new Set(), built = pk.map(k => { const r = seriesFor(panels.get(k), metric, cz, { individuals: ind, blanks: true }); r.keys.forEach(x => used.add(x)); return r; });
+    const famLab = facet === "family" ? famLabeler(ss) : null;
     let yd = null;
     if (share && pk.length > 1) { const v = []; built.forEach(b => b.series.forEach(s => { s.pts.forEach(p => v.push(p[1])); })); yd = RZChart.domain(v, log); }
     pk.forEach((k, i) => {
       const el = document.createElement("div"); el.className = "card"; wrap.appendChild(el);
       const inner = document.createElement("div"); el.appendChild(inner);
-      const title = facet === "experiment" ? EXP[k].title + (EXP[k].user ? " (yours)" : "") : facet === "species" ? k : facet === "temperature" ? (k === null ? "temperature not recorded" : k + " °C") : "";
+      const title = facet === "experiment" ? EXP[k].title + (EXP[k].user ? " (yours)" : "") : facet === "species" ? k : facet === "temperature" ? (k === null ? "temperature not recorded" : k + " °C") : facet === "family" ? famLab(k) : "";
       const sub = facet === "experiment" ? `${EXP[k].species}, ${panels.get(k).length} wells` : (facet === "none" ? "" : `${panels.get(k).length} wells`);
       RZChart.lines(inner, { series: built[i].series, log, yDomain: yd, title, subtitle: sub, xLabel: "Hours since resazurin added", yLabel: METRIC[metric],
         height: pk.length > 1 ? 280 : 440, yFmt: metric === "fold" ? (v => fmt(v) + "×") : undefined });
